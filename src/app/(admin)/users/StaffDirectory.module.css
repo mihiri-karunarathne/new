@@ -1,0 +1,529 @@
+/* ═══════════════════════════════════════
+   Page
+   ═══════════════════════════════════════ */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ═══════════════════════════════════════
+   Header
+   ═══════════════════════════════════════ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  color: #001b3c;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 36px;
+  margin: 0;
+}
+
+.subtitle {
+  color: #3e4948;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   Filter Bar
+   ═══════════════════════════════════════ */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f0f3ff;
+  border-radius: 12px;
+}
+
+.searchWrap {
+  flex: 1 1 0;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 13px 16px 14px 48px;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #3e4948;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.searchInput::placeholder {
+  color: #bdc9c8;
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 0 2px rgba(0, 103, 102, 0.15);
+}
+
+.filterControls {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid rgba(189, 201, 200, 0.2);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #006766;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.filterBtn:hover {
+  background: #f0fdfa;
+}
+
+/* ═══════════════════════════════════════
+   Table
+   ═══════════════════════════════════════ */
+.tableWrap {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(189, 201, 200, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+/* ── Column widths ── */
+.colName   { min-width: 218px; width: 218px; }
+.colNic    { min-width: 141px; width: 141px; }
+.colRole   { min-width: 119px; width: 119px; }
+.colDesig  { min-width: 179px; width: 179px; }
+.colWard   { min-width: 131px; width: 131px; }
+.colActions { min-width: 185px; width: 185px; }
+
+/* ── Header ── */
+.tableHead {
+  display: flex;
+  align-items: flex-start;
+  background: #f8fafc;
+}
+
+.th {
+  padding: 16px 24px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.colActions .th {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* ── Body ── */
+.tableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  border-top: 1px solid #f1f5f9;
+  transition: background-color 0.1s ease;
+}
+
+.tableRow:hover {
+  background: #fafbff;
+}
+
+.td {
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.colActions .td {
+  justify-content: flex-end;
+  padding-left: 36px;
+}
+
+.emptyRow {
+  padding: 48px 24px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* ── Name cell ── */
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #e7eeff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f766e;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nameText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nameValue {
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.idValue {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+/* ── Cell text ── */
+.cellText {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.cellTextMedium {
+  font-weight: 500;
+}
+
+/* ── Role badge ── */
+.roleBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.roleDoctor {
+  background: #a5eff0;
+  color: #1a6d6e;
+}
+
+.roleNurse {
+  background: #ebf8ff;
+  color: #2b6cb0;
+}
+
+.roleClerk {
+  background: #ffdad6;
+  color: #93000a;
+}
+
+.roleKitchen {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.roleAdmin {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+/* ── Action buttons ── */
+.actionBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.actionBtn:hover {
+  background: #f1f5f9;
+  color: #0f766e;
+}
+
+.actionBtn svg {
+  display: block;
+}
+
+/* ═══════════════════════════════════════
+   Pagination
+   ═══════════════════════════════════════ */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid #f1f5f9;
+  background: rgba(248, 250, 252, 0.3);
+}
+
+.paginationInfo {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.paginationBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.pageBtn {
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(189, 201, 200, 0.3);
+  background: #fff;
+  color: #64748b;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+  border-color: #006766;
+  color: #006766;
+}
+
+.pageBtnActive {
+  background: #006766;
+  border-color: #006766;
+  color: #fff;
+}
+
+.pageBtnActive:hover {
+  background: #005555;
+  border-color: #005555;
+  color: #fff;
+}
+
+.pageBtnDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ═══════════════════════════════════════
+   Stat Cards
+   ═══════════════════════════════════════ */
+.statsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Nursing Shift Status ── */
+.statCardShift {
+  padding: 24px;
+  background: #dee8ff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 103, 102, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  color: #006766;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+}
+
+.statShiftBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.statBig {
+  display: block;
+  color: #001b3c;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 36px;
+}
+
+.statSub {
+  display: block;
+  color: #3e4948;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-top: 2px;
+}
+
+.shiftDot {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  border: 4px solid #006766;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+/* ── Efficiency Rate ── */
+.statCardEfficiency {
+  padding: 24px;
+  background: #13696a;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.statEfficiencyTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.statLabelLight {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+}
+
+.statEfficiencyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.statBigWhite {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 36px;
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #fff;
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+.progressFill942 {
+  width: 94.2%;
+}
+
+/* ── On-Duty Doctors ── */
+.statCardDoctors {
+  padding: 24px 24px 38px;
+  background: #006766;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.doctorsDeco {
+  position: absolute;
+  right: -10px;
+  bottom: 10px;
+  width: 95px;
+  height: 95px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.statHuge {
+  display: block;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 40px;
+}

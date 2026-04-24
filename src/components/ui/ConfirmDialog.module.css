@@ -1,0 +1,114 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.15s ease;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 380px;
+  margin: 16px;
+  padding: 28px 28px 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  animation: slideUp 0.2s ease;
+  outline: none;
+}
+
+.iconWrap {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #fef2f2;
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0 0 6px;
+  color: #0f172a;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.message {
+  margin: 0 0 24px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cancelBtn {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.cancelBtn:hover {
+  background: #f8fafc;
+}
+
+.confirmBtn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dangerBtn {
+  background: #dc2626;
+  color: #fff;
+}
+
+.dangerBtn:hover {
+  background: #b91c1c;
+}
+
+.defaultBtn {
+  background: #006766;
+  color: #fff;
+}
+
+.defaultBtn:hover {
+  background: #005555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

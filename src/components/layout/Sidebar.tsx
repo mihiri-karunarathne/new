@@ -15,18 +15,18 @@ const NAV_CONFIG: Record<string, NavItem[]> = {
     { label: 'Diet Types',      href: '/diet-types',   icon: <IconCup /> },
   ],
   NURSE: [
-    { label: 'Dashboard',       href: '/dashboard',        icon: <IconGrid /> },
+    { label: 'Dashboard',       href: '/nurse-dashboard',        icon: <IconGrid /> },
     { label: 'Patients',        href: '/patients',          icon: <IconUser /> },
     { label: 'Register Patient',href: '/register-patient',  icon: <IconUserPlus /> },
     { label: 'Diet Entry',      href: '/diet-entry',        icon: <IconEdit /> },
   ],
   DOCTOR: [
-    { label: 'Dashboard',    href: '/dashboard',    icon: <IconGrid /> },
+    { label: 'Dashboard',    href: '/doctor-dashboard',    icon: <IconGrid /> },
     { label: 'Patients',     href: '/patients',     icon: <IconUser /> },
     { label: 'Prescriptions',href: '/prescriptions',icon: <IconFile /> },
   ],
   OFFICE_CLERK: [
-    { label: 'Dashboard',      href: '/dashboard',             icon: <IconGrid /> },
+    { label: 'Dashboard',      href: '/office-dashboard',             icon: <IconGrid /> },
     { label: 'Ward Summary',   href: '/ward-summary',          icon: <IconHome /> },
     { label: 'Hospital Summary',href: '/hospital-summary',     icon: <IconBar /> },
     { label: 'Ingredients',    href: '/ingredient-calculation',icon: <IconBox /> },
@@ -35,7 +35,7 @@ const NAV_CONFIG: Record<string, NavItem[]> = {
     { label: 'Reports',        href: '/reports',               icon: <IconDoc /> },
   ],
   KITCHEN_CLERK: [
-    { label: 'Dashboard',     href: '/dashboard',     icon: <IconGrid /> },
+    { label: 'Dashboard',     href: '/kitchen-dashboard',     icon: <IconGrid /> },
     { label: 'Ingredients',   href: '/ingredients',   icon: <IconBox /> },
     { label: 'Confirm Receipt',href: '/receipt-confirm',icon: <IconCheck /> },
     { label: 'Meal Dispatch', href: '/meal-dispatch', icon: <IconClock /> },
