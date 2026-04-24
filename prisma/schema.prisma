@@ -1,0 +1,179 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  NURSE
+  DOCTOR
+  OFFICE_CLERK
+  KITCHEN_CLERK
+}
+
+enum DietStatus {
+  PENDING
+  APPROVED
+  FROZEN
+}
+
+enum OrderStatus {
+  PENDING
+  SENT
+  CONFIRMED
+  REJECTED
+}
+
+model Staff {
+  id           Int       @id @default(autoincrement())
+  name         String
+  email        String    @unique
+  passwordHash String
+  NIC          String    @unique
+  role         Role
+  ward         String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  prescriptions DietPrescription[] @relation("DoctorPrescriptions")
+  dietEntries   DietPrescription[] @relation("NurseEntries")
+  wardSummaries WardSummary[]
+  itemReceipts  ItemReceipt[]
+
+  @@map("staff")
+}
+
+model Ward {
+  id          Int      @id @default(autoincrement())
+  wardName    String   @unique
+  totalBeds   Int
+  createdAt   DateTime @default(now())
+
+  patients      Patient[]
+  wardSummaries WardSummary[]
+
+  @@map("wards")
+}
+
+model Patient {
+  id           Int      @id @default(autoincrement())
+  name         String
+  gender       String
+  weight       Float?
+  height       Float?
+  allergy      String?
+  symptoms     String?
+  address      String?
+  admittedAt   DateTime @default(now())
+  dischargedAt DateTime?
+
+  wardId Int
+  ward   Ward @relation(fields: [wardId], references: [id])
+
+  prescriptions DietPrescription[]
+
+  @@map("patients")
+}
+
+model DietType {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+
+  dietScales    DietScale[]
+  prescriptions DietPrescription[]
+
+  @@map("diet_types")
+}
+
+model FoodGroup {
+  id           Int    @id @default(autoincrement())
+  name         String @unique
+  unit         String
+  substitution String?
+
+  dietScales DietScale[]
+
+  @@map("food_groups")
+}
+
+model DietScale {
+  id         Int   @id @default(autoincrement())
+  morningQty Float
+  lunchQty   Float
+  dinnerQty  Float
+
+  dietTypeId  Int
+  dietType    DietType  @relation(fields: [dietTypeId], references: [id])
+  foodGroupId Int
+  foodGroup   FoodGroup @relation(fields: [foodGroupId], references: [id])
+
+  @@unique([dietTypeId, foodGroupId])
+  @@map("diet_scales")
+}
+
+model DietPrescription {
+  id             Int        @id @default(autoincrement())
+  status         DietStatus @default(PENDING)
+  extraItem      String?
+  prescribedDate DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  patientId Int
+  patient   Patient @relation(fields: [patientId], references: [id])
+  dietTypeId Int
+  dietType   DietType @relation(fields: [dietTypeId], references: [id])
+  doctorId   Int?
+  doctor     Staff?  @relation("DoctorPrescriptions", fields: [doctorId], references: [id])
+  nurseId    Int?
+  nurse      Staff?  @relation("NurseEntries", fields: [nurseId], references: [id])
+
+  @@map("diet_prescriptions")
+}
+
+model WardSummary {
+  id            Int      @id @default(autoincrement())
+  generatedDate DateTime @default(now())
+  dietCountByType Json
+  totalPatients Int
+  mealCycle     String
+
+  wardId  Int
+  ward    Ward  @relation(fields: [wardId], references: [id])
+  clerkId Int?
+  clerk   Staff? @relation(fields: [clerkId], references: [id])
+
+  @@map("ward_summaries")
+}
+
+model IngredientOrder {
+  id                    Int         @id @default(autoincrement())
+  orderDate             DateTime    @default(now())
+  mealCycle             String
+  status                OrderStatus @default(PENDING)
+  totalQuantityRequired  Float
+  unit                  String
+  isEmergency           Boolean     @default(false)
+
+  itemReceipts ItemReceipt[]
+
+  @@map("ingredient_orders")
+}
+
+model ItemReceipt {
+  id              Int      @id @default(autoincrement())
+  itemCode        String
+  quantityReceived Float
+  status          String
+  receivedDate    DateTime @default(now())
+
+  orderId Int
+  order   IngredientOrder @relation(fields: [orderId], references: [id])
+  clerkId Int?
+  clerk   Staff? @relation(fields: [clerkId], references: [id])
+
+  @@map("item_receipts")
+}

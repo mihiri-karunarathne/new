@@ -1,0 +1,132 @@
+.header {
+  height: 64px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobileMenuBtn {
+  display: none;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 8px;
+}
+
+.appName {
+  color: #0f172a;
+  font-size: 18px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.notificationWrapper {
+  position: relative;
+}
+
+.notificationButton {
+  padding: 8px;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.notificationDot {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ba1a1a;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.userName {
+  color: #0f172a;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: right;
+}
+
+.roleLabel {
+  color: #64748b;
+  font-size: 11px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 16.5px;
+  text-align: right;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #0a8280;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.avatarInitial {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: Inter, sans-serif;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1023px) {
+  .mobileMenuBtn {
+    display: flex;
+  }
+}

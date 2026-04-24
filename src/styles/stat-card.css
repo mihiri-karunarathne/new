@@ -1,0 +1,62 @@
+/* StatCard component styling */
+
+/* Icon badge - colored backgrounds */
+.stat-card-icon[data-color="blue"] {
+  background-color: #EBF8FF;
+  color: #2B6CB0;
+}
+
+.stat-card-icon[data-color="green"] {
+  background-color: #F0FFF4;
+  color: #2F855A;
+}
+
+.stat-card-icon[data-color="teal"] {
+  background-color: #E6FFFA;
+  color: #2C7A7B;
+}
+
+.stat-card-icon[data-color="red"] {
+  background-color: #FFF5F5;
+  color: #C53030;
+}
+
+.stat-card-icon[data-color="purple"] {
+  background-color: #FAF5FF;
+  color: #6B46C1;
+}
+
+.stat-card-icon[data-color="orange"] {
+  background-color: #FFFAF0;
+  color: #C05621;
+}
+
+/* Card label - consistent color across all variants */
+.stat-card-label {
+  color: #3E4948;
+}
+
+/* Subtext - matches the color variant */
+.stat-card-subtext[data-color="blue"] {
+  color: #2B6CB0;
+}
+
+.stat-card-subtext[data-color="green"] {
+  color: #2F855A;
+}
+
+.stat-card-subtext[data-color="teal"] {
+  color: #2C7A7B;
+}
+
+.stat-card-subtext[data-color="red"] {
+  color: #C53030;
+}
+
+.stat-card-subtext[data-color="purple"] {
+  color: #6B46C1;
+}
+
+.stat-card-subtext[data-color="orange"] {
+  color: #C05621;
+}

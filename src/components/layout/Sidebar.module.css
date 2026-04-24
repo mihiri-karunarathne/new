@@ -1,0 +1,147 @@
+/* styles/Sidebar.module.css */
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  height: 100vh;
+  background: #F8FAFC;
+  border-right: 1px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  flex-shrink: 0;
+}
+
+.brandSection {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 40px;
+}
+
+.brandTitle {
+  color: #0F766E;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.brandSubtitle {
+  color: #64748B;
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 0.50px;
+}
+
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-right: 4px solid transparent;
+  text-decoration: none;
+  border-radius: 6px 0 0 6px;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.navLinkActive {
+  composes: navLink;
+  border-right-color: #0D9488;
+}
+
+.navIcon {
+  color: #64748B;
+  display: flex;
+  align-items: center;
+}
+
+.navIconActive {
+  composes: navIcon;
+  color: #0F766E;
+}
+
+.navLabel {
+  color: #64748B;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.navLabelActive {
+  composes: navLabel;
+  color: #0F766E;
+  font-weight: 600;
+}
+
+.settingsSection {
+  padding-top: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.settingsLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.settingsLink:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.settingsIcon {
+  color: #64748B;
+  display: flex;
+}
+
+.settingsLabel {
+  color: #64748B;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.mobileOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 20;
+}
+
+@media (max-width: 1023px) {
+  .mobileOverlay {
+    display: block !important;
+  }
+}

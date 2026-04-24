@@ -1,0 +1,14 @@
+/* Quick action button styling */
+
+/* Color-specific styling based on data attribute */
+.quick-action-icon[data-color="#0D9488"] {
+  background-color: color-mix(in srgb, #0D9488 10%, transparent);
+}
+
+.quick-action-icon[data-color="#2B6CB0"] {
+  background-color: color-mix(in srgb, #2B6CB0 10%, transparent);
+}
+
+.quick-action-icon[data-color="#2F855A"] {
+  background-color: color-mix(in srgb, #2F855A 10%, transparent);
+}
