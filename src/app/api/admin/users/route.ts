@@ -11,12 +11,20 @@ type RegisterUserPayload = {
   staffId?: string;
 };
 
+type UpdateUserPayload = {
+  fullName?: string;
+  nicNumber?: string;
+  role?: string;
+  ward?: string;
+};
+
 const roleMap: Record<string, Role> = {
   admin: Role.ADMIN,
   nurse: Role.NURSE,
   doctor: Role.DOCTOR,
   office_clerk: Role.OFFICE_CLERK,
   kitchen: Role.KITCHEN_CLERK,
+  kitchen_clerk: Role.KITCHEN_CLERK,
 };
 
 function normalizeWard(ward?: string) {
@@ -34,8 +42,37 @@ function generatePasswordHash(staffId: string, nicNumber: string) {
   return createHash("sha256").update(`${staffId}:${nicNumber}`).digest("hex");
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const requestUrl = new URL(request.url);
+    const idParam = requestUrl.searchParams.get("id");
+
+    if (idParam) {
+      const id = Number.parseInt(idParam, 10);
+      if (Number.isNaN(id)) {
+        return NextResponse.json({ error: "Invalid id parameter" }, { status: 400 });
+      }
+
+      const user = await prisma.staff.findUnique({
+        where: { id },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          NIC: true,
+          role: true,
+          ward: true,
+          createdAt: true,
+        },
+      });
+
+      if (!user) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 });
+      }
+
+      return NextResponse.json({ user }, { status: 200 });
+    }
+
     const users = await prisma.staff.findMany({
       orderBy: { createdAt: "desc" },
       select: {
@@ -157,6 +194,79 @@ export async function DELETE(request: Request) {
 
     if (typeof message === "string" && message.includes("Record to delete does not exist")) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+export async function PUT(request: Request) {
+  try {
+    const requestUrl = new URL(request.url);
+    const idParam = requestUrl.searchParams.get("id");
+
+    if (!idParam) {
+      return NextResponse.json({ error: "Missing required query parameter: id" }, { status: 400 });
+    }
+
+    const id = Number.parseInt(idParam, 10);
+    if (Number.isNaN(id)) {
+      return NextResponse.json({ error: "Invalid id parameter" }, { status: 400 });
+    }
+
+    const body = (await request.json()) as UpdateUserPayload;
+
+    const fullName = body.fullName?.trim();
+    const nicNumber = body.nicNumber?.trim();
+    const roleKey = body.role?.trim().toLowerCase();
+
+    if (!fullName || !nicNumber || !roleKey) {
+      return NextResponse.json(
+        { error: "Missing required fields: fullName, nicNumber, role" },
+        { status: 400 }
+      );
+    }
+
+    const mappedRole = roleMap[roleKey];
+    if (!mappedRole) {
+      return NextResponse.json({ error: "Invalid role value" }, { status: 400 });
+    }
+
+    const updated = await prisma.staff.update({
+      where: { id },
+      data: {
+        name: fullName,
+        NIC: nicNumber,
+        role: mappedRole,
+        ward: normalizeWard(body.ward),
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        NIC: true,
+        role: true,
+        ward: true,
+        createdAt: true,
+      },
+    });
+
+    return NextResponse.json({ user: updated }, { status: 200 });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Failed to update user";
+
+    if (typeof message === "string" && message.includes("Record to update not found")) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (
+      typeof message === "string" &&
+      (message.includes("Unique constraint") || message.includes("duplicate key"))
+    ) {
+      return NextResponse.json(
+        { error: "A user with the same NIC already exists" },
+        { status: 409 }
+      );
     }
 
     return NextResponse.json({ error: message }, { status: 500 });

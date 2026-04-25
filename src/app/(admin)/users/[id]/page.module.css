@@ -1,0 +1,714 @@
+/* ══════════════════════════════════════════
+   Staff Detail View
+   ══════════════════════════════════════════ */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 96px;
+  padding-bottom: 48px;
+  padding-left: 288px;
+  padding-right: 48px;
+  position: relative;
+  background: #F9F9FF;
+}
+
+/* ── Sidebar ────────────────────────────── */
+
+.sidebar {
+  width: 240px;
+  padding: 24px 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  background: #F8FAFC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 20;
+}
+
+.sidebarHeader {
+  padding-bottom: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.logoText {
+  color: #0F766E;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.logoSubtext {
+  color: #64748B;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.sidebarNav {
+  flex: 1;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navItem {
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #64748B;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.navItem:hover {
+  background: #F1F5F9;
+}
+
+.navItemActive {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #F0FDFA;
+  border-right: 4px solid #0D9488;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0F766E;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sidebarFooter {
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Top Bar ────────────────────────────── */
+
+.topBar {
+  height: 64px;
+  padding: 0 32px;
+  left: 240px;
+  right: 0;
+  top: 0;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 15;
+}
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backButton {
+  padding: 8px;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  transition: color 0.15s ease;
+}
+
+.backButton:hover {
+  color: #0F172A;
+}
+
+.topBarTitleGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.topBarTitle {
+  color: #0F172A;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22.5px;
+}
+
+.topBarSubtitle {
+  color: #64748B;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.editButton {
+  padding: 8px 24px;
+  background: #006766;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.editButton:hover {
+  background: #005655;
+}
+
+.topBarUser {
+  padding-left: 24px;
+  border-left: 1px solid rgba(189, 201, 200, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topBarUserInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.topBarUserName {
+  color: #0F172A;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.topBarUserRole {
+  color: #0D9488;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 15px;
+}
+
+.topBarAvatar {
+  width: 40px;
+  height: 40px;
+  background: #DEE8FF;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #001B3C;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  flex-shrink: 0;
+}
+
+/* ── Content ────────────────────────────── */
+
+.content {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Profile Card ───────────────────────── */
+
+.profileCard {
+  padding: 32px;
+  background: #fff;
+  border-radius: 32px;
+  border: 1px solid rgba(189, 201, 200, 0.1);
+  position: relative;
+  min-height: 381px;
+}
+
+.avatarWrapper {
+  position: absolute;
+  left: 49.66px;
+  top: 0;
+  padding-bottom: 24px;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+  background: linear-gradient(135deg, #006766 0%, #13696A 100%);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1),
+              0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.avatarInitials {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.onlineIndicator {
+  width: 24px;
+  height: 24px;
+  background: #22C55E;
+  border-radius: 9999px;
+  border: 4px solid #fff;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
+
+.staffName {
+  position: absolute;
+  left: 36.97px;
+  top: 152px;
+  padding-bottom: 4px;
+  color: #001B3C;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+}
+
+.staffRole {
+  position: absolute;
+  left: 38.91px;
+  top: 188px;
+  padding-bottom: 16px;
+  color: #3E4948;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+}
+
+.roleBadge {
+  position: absolute;
+  left: 70.98px;
+  top: 224px;
+  padding: 6px 16px;
+  background: #A5EFF0;
+  border-radius: 9999px;
+  color: #1A6D6E;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.contactInfo {
+  position: absolute;
+  left: 0;
+  top: 252px;
+  width: 227.33px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(189, 201, 200, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #3E4948;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.iconTeal {
+  color: #006766;
+  display: flex;
+}
+
+.iconDanger {
+  color: #BA1A1A;
+  display: flex;
+}
+
+/* ── Profile Sections ───────────────────── */
+
+.profileSection {
+  padding: 40px;
+  background: #F0F3FF;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sectionLabel {
+  color: #0D9488;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 16.5px;
+  letter-spacing: 2.2px;
+}
+
+.fieldsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  color: #3E4948;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+}
+
+.fieldValue {
+  color: #001B3C;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.fieldValueMono {
+  color: #001B3C;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+}
+
+.fieldValueSmall {
+  color: #001B3C;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.fieldValueAddress {
+  color: #001B3C;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22.75px;
+}
+
+.metadataDivider {
+  padding-top: 40px;
+  border-top: 1px solid rgba(189, 201, 200, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.metadataFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Danger Zone ────────────────────────── */
+
+.dangerZone {
+  min-height: 134px;
+  padding: 32px;
+  background: rgba(255, 218, 214, 0.2);
+  border-radius: 32px;
+  border: 1px solid rgba(186, 26, 26, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dangerLeft {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.dangerIconWrapper {
+  width: 40px;
+  height: 48px;
+  background: rgba(186, 26, 26, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dangerTextGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.dangerTitle {
+  color: #93000A;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.dangerDescription {
+  color: rgba(147, 0, 10, 0.7);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.deleteButton {
+  padding: 12px 32px;
+  background: #BA1A1A;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.deleteButton:hover {
+  background: #991515;
+}
+
+/* ── Audit Footer ───────────────────────── */
+
+.auditFooter {
+  text-align: center;
+  color: #BDC9C8;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 3px;
+}
+
+/* ══════════════════════════════════════════
+   Delete Confirmation Modal
+   ══════════════════════════════════════════ */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 27, 60, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.modalCard {
+  background: #fff;
+  border-radius: 28px;
+  padding: 48px 40px 40px;
+  max-width: 480px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0px 25px 60px -12px rgba(0, 27, 60, 0.35),
+              0px 0px 0px 1px rgba(189, 201, 200, 0.08);
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modalIconRing {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(186, 26, 26, 0.12) 0%, rgba(186, 26, 26, 0.06) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.modalIconRing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(186, 26, 26, 0.2);
+  animation: modalSpin 12s linear infinite;
+}
+
+.modalWarningIcon {
+  color: #BA1A1A;
+}
+
+.modalTitle {
+  color: #001B3C;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalDescription {
+  color: #3E4948;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  max-width: 360px;
+}
+
+.modalStaffHighlight {
+  color: #93000A;
+  font-weight: 600;
+}
+
+.modalWarning {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: rgba(255, 218, 214, 0.35);
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+.modalWarningText {
+  color: rgba(147, 0, 10, 0.85);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.modalCancelButton {
+  flex: 1;
+  padding: 14px 24px;
+  background: #fff;
+  border: 1px solid rgba(189, 201, 200, 0.3);
+  border-radius: 12px;
+  color: #006766;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  font-family: inherit;
+}
+
+.modalCancelButton:hover {
+  background: #F8FAFC;
+  border-color: rgba(189, 201, 200, 0.5);
+}
+
+.modalConfirmButton {
+  flex: 1;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #BA1A1A 0%, #991515 100%);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  font-family: inherit;
+  box-shadow: 0px 4px 12px -2px rgba(186, 26, 26, 0.35);
+}
+
+.modalConfirmButton:hover {
+  box-shadow: 0px 6px 16px -2px rgba(186, 26, 26, 0.45);
+  transform: translateY(-1px);
+}
+
+.modalConfirmButton:active {
+  transform: translateY(0);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

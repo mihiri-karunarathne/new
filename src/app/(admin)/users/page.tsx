@@ -402,7 +402,7 @@ export default function StaffDirectoryPage() {
                         className={styles.actionBtn}
                         title="View"
                         aria-label={`View ${member.name}`}
-                        onClick={() => {/* router.push(`/users/${member.id}`) */}}
+                        onClick={() => router.push(`/users/${member.id}`)}
                       >
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M1.5 8.5C1.5 8.5 3.833 3.5 8.5 3.5C13.167 3.5 15.5 8.5 15.5 8.5C15.5 8.5 13.167 13.5 8.5 13.5C3.833 13.5 1.5 8.5 1.5 8.5Z" stroke="#94A3B8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -414,7 +414,7 @@ export default function StaffDirectoryPage() {
                         className={styles.actionBtn}
                         title="Edit"
                         aria-label={`Edit ${member.name}`}
-                        onClick={() => {/* router.push(`/users/${member.id}/edit`) */}}
+                        onClick={() => router.push(`/users/${member.id}/edit`)}
                       >
                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M10.5 1.5L13.5 4.5L4.5 13.5H1.5V10.5L10.5 1.5Z" stroke="#94A3B8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
