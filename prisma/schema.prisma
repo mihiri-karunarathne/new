@@ -177,3 +177,29 @@ model ItemReceipt {
 
   @@map("item_receipts")
 }
+
+model Ingredient {
+  id            Int      @id @default(autoincrement())
+  serialNumber  Int      @unique
+  categoryType  String
+  name          String
+  specification String?
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  substitutes IngredientSubstitute[]
+
+  @@map("ingredients")
+}
+
+model IngredientSubstitute {
+  id           Int    @id @default(autoincrement())
+  ingredientId Int
+  name         String
+  priority     Int
+
+  ingredient Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+
+  @@map("ingredient_substitutes")
+}

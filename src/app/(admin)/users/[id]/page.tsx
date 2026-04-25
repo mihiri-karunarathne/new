@@ -7,91 +7,6 @@ import styles from './page.module.css';
 
 /* ── Inline SVG Icon Components ────────── */
 
-function IconDashboard() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor" />
-      <rect x="11" y="1" width="6" height="6" rx="1.5" fill="currentColor" />
-      <rect x="1" y="11" width="6" height="6" rx="1.5" fill="currentColor" />
-      <rect x="11" y="11" width="6" height="6" rx="1.5" fill="currentColor" />
-    </svg>
-  );
-}
-
-function IconStaff() {
-  return (
-    <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
-      <circle cx="8" cy="5" r="4" fill="currentColor" />
-      <path
-        d="M0 15c0-3.314 3.582-6 8-6s8 2.686 8 6"
-        fill="currentColor"
-      />
-      <circle cx="17" cy="5.5" r="2.5" fill="currentColor" opacity="0.5" />
-      <path
-        d="M15 15c0-2.5 1.8-4.5 4-4.5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        opacity="0.5"
-      />
-    </svg>
-  );
-}
-
-function IconPatients() {
-  return (
-    <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
-      <circle cx="9.5" cy="4.5" r="3.5" fill="currentColor" />
-      <path
-        d="M2 15c0-3.866 3.358-7 7.5-7s7.5 3.134 7.5 7"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function IconMeals() {
-  return (
-    <svg width="15" height="20" viewBox="0 0 15 20" fill="none">
-      <path
-        d="M1 4h2v12c0 1.1-.9 2-2 2V4zm12 0h-2v14c1.1 0 2-.9 2-2V4z"
-        fill="currentColor"
-      />
-      <rect x="4" y="0" width="7" height="16" rx="1" fill="currentColor" />
-      <rect x="0" y="16" width="15" height="2" rx="1" fill="currentColor" />
-    </svg>
-  );
-}
-
-function IconReports() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <rect x="1" y="10" width="4" height="7" rx="1" fill="currentColor" />
-      <rect x="7" y="5" width="4" height="12" rx="1" fill="currentColor" />
-      <rect x="13" y="1" width="4" height="16" rx="1" fill="currentColor" />
-    </svg>
-  );
-}
-
-function IconSettings() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M10 13a3 3 0 100-6 3 3 0 000 6zm0-1.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"
-        fill="currentColor"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M8.22 1.17a2 2 0 013.56 0l.37.74a1 1 0 001.13.5l.82-.18a2 2 0 012.52 2.52l-.18.82a1 1 0 00.5 1.13l.74.37a2 2 0 010 3.56l-.74.37a1 1 0 00-.5 1.13l.18.82a2 2 0 01-2.52 2.52l-.82-.18a1 1 0 00-1.13.5l-.37.74a2 2 0 01-3.56 0l-.37-.74a1 1 0 00-1.13-.5l-.82.18a2 2 0 01-2.52-2.52l.18-.82a1 1 0 00-.5-1.13l-.74-.37a2 2 0 010-3.56l.74-.37a1 1 0 00.5-1.13l-.18-.82A2 2 0 015.48 2.23l.82.18a1 1 0 001.13-.5l.37-.74zM10 14.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
 function IconArrowLeft() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -185,47 +100,6 @@ function IconAlertSmall() {
 }
 
 /* ── Sidebar Component ─────────────────── */
-
-function Sidebar() {
-  return (
-    <aside className={styles.sidebar}>
-      <div className={styles.sidebarHeader}>
-        <div className={styles.logoText}>DigitalEase</div>
-        <div className={styles.logoSubtext}>Health System</div>
-      </div>
-
-      <nav className={styles.sidebarNav}>
-        <Link href="/dashboard" className={styles.navItem}>
-          <IconDashboard />
-          Dashboard
-        </Link>
-        <div className={styles.navItemActive}>
-          <IconStaff />
-          Staff Management
-        </div>
-        <Link href="/patients" className={styles.navItem}>
-          <IconPatients />
-          Patients
-        </Link>
-        <Link href="/meals" className={styles.navItem}>
-          <IconMeals />
-          Meal Management
-        </Link>
-        <Link href="/reports" className={styles.navItem}>
-          <IconReports />
-          Reports
-        </Link>
-      </nav>
-
-      <div className={styles.sidebarFooter}>
-        <Link href="/settings" className={styles.navItem}>
-          <IconSettings />
-          Settings
-        </Link>
-      </div>
-    </aside>
-  );
-}
 
 /* ── Delete Modal Component ────────────── */
 
@@ -431,10 +305,7 @@ export default function StaffDetailPage() {
 
   return (
     <main className={styles.page}>
-      <Sidebar />
-
-      {/* Top Bar */}
-      <header className={styles.topBar}>
+      <div className={styles.pageActionBar}>
         <div className={styles.topBarLeft}>
           <Link href="/users" className={styles.backButton}>
             <IconArrowLeft />
@@ -450,16 +321,8 @@ export default function StaffDetailPage() {
             <IconPlus />
             Edit Details
           </Link>
-
-          <div className={styles.topBarUser}>
-            <div className={styles.topBarUserInfo}>
-              <span className={styles.topBarUserName}>Admin User</span>
-              <span className={styles.topBarUserRole}>Administrator</span>
-            </div>
-            <div className={styles.topBarAvatar}>AD</div>
-          </div>
         </div>
-      </header>
+      </div>
 
       {/* Content */}
       <div className={styles.content}>
